@@ -1,1 +1,3 @@
-simple shell project by Patrick and Yusuf
+##
+
+Simple shell project done by Patrick and Yusuf
