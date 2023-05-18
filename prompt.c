@@ -11,7 +11,6 @@
 void _prompt(int argc, char **argv)
 {
 	char *input = NULL;
-	int i = 0;
 
 	while (1)
 	{
@@ -23,12 +22,12 @@ void _prompt(int argc, char **argv)
 		input = read_input();
 		if (input != NULL)
 		{
-			argv = tokenize(command);
+			argv = tokenize(input);
 			execute(argc, argv);
 
-			free_args(argv)
+			free_args(argv);
 		}
 		continue;
-		free(command);
+		free(input);
 	}
 }

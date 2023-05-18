@@ -12,15 +12,15 @@ char *read_input()
 	size_t n = 0;
 	char *lineptr = NULL;
 
-	read_char = getline(&lineptr, &n, stdin)
+	read_char = getline(&lineptr, &n, stdin);
 
 	if (read_char == -1)
 	{
-		free(lineptr);
 		if (isatty(STDIN_FILENO))
 		{
 			write(STDOUT_FILENO, "\n", 1);
 		}
+		free(lineptr);
 		exit(EXIT_FAILURE);
 	}
 

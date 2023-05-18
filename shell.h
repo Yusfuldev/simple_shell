@@ -14,8 +14,11 @@
 extern char **environ;
 void _prompt(int argc, char **argv);
 char *read_input();
+void free_args(char **argv);
 void signal_handler(int signum);
 int execute(int ac, char **args);
 char **tokenize(char *buffer);
+char *_strtok(char *str, char *delim);
+char *_strstr(char *haystack, char *needle);
 
 #endif

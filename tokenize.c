@@ -8,7 +8,7 @@ char **tokenize(char *buffer)
 {
 	int num_toks = 0, i = 0;
 	char *token = NULL, *buf_cp = NULL, **args = NULL;
-	char *delim = " \n\t";
+	char *delim = " ";
 
 	buf_cp = strdup(buffer);
 	if (!buf_cp)
@@ -34,8 +34,8 @@ char **tokenize(char *buffer)
 	token = _strtok(buffer, delim);
 	for (; i <= num_toks && token != NULL; i++)
 	{
-		/*args[i] = malloc(sizeof(char) * strlen(token));*/
 		args[i] = strdup(token);
+		printf("token: %s", args[i]);
 		token = _strtok(NULL, delim);
 	}
 	args[i] = NULL;

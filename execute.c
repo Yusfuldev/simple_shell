@@ -9,25 +9,25 @@
 int execute(int ac, char **args)
 {
 	int status = 0;
-	char *command = NULL;
+/*	char *command = NULL;*/
 	pid_t child_pid;
-	char *message;
+/*	char *message;*/
 
-	if (strcmp(args[0], "env") == 0)
+	/*if (strcmp(args[0], "env") == 0)
 	{
 		printenv();
 		return (1);
-	}
+	}*/
 	if (strcmp(args[0], "exit") == 0)
 		exit(0);
-	command = path_handler(args);
+/*	command = path_handler(args);
 	if (command == NULL)
 	{
 		write(STDOUT_FILENO, args[0], strlen(args[0]));
 		message = ": not found\n";
 		write(STDERR_FILENO, message, strlen(message));
 		return (1);
-	}
+	}*/
 	(void)ac;
 	child_pid = fork();
 	if (child_pid < 0)
@@ -38,7 +38,7 @@ int execute(int ac, char **args)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(command, args, environ) < 0)
+		if (execve(/*command*/args[0], args, environ) < 0)
 		{
 			perror("./hsh");
 			fflush(stderr);
