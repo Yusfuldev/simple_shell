@@ -15,5 +15,7 @@ extern char **environ;
 void _prompt(int argc, char **argv);
 char *read_input();
 void signal_handler(int signum);
+int execute(int ac, char **args);
+char **tokenize(char *buffer);
 
 #endif
