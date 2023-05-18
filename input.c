@@ -3,7 +3,7 @@
 /**
 *read_input - get inputs from the user
 *
-Return: the buffer that contains user's input
+*Return: the buffer that contains user's input
 */
 
 char *read_input()
@@ -49,7 +49,7 @@ void signal_handler(int signum)
 
 /**
  *free_args(char **args)
- *@args: parsed arguments
+ *@argv: parsed arguments
  *
  *Return: Nothing
 */
@@ -58,7 +58,7 @@ void free_args(char **argv)
 {
 	int i = 0;
 
-	for ( i = 0; argv[i] != NULL; i++)
+	for (i = 0; argv[i] != NULL; i++)
 	{
 		free(argv[i]);
 	}
