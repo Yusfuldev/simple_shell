@@ -35,7 +35,6 @@ char **tokenize(char *buffer)
 	for (; i <= num_toks && token != NULL; i++)
 	{
 		args[i] = strdup(token);
-		printf("token: %s", args[i]);
 		token = _strtok(NULL, delim);
 	}
 	args[i] = NULL;
