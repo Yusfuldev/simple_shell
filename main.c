@@ -9,5 +9,5 @@
 int main(int argc, char **argv)
 {
 	_prompt(argc, argv);
-        return (0);
+	return (0);
 }
