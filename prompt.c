@@ -1,8 +1,18 @@
 #include "shell.h"
+
+/**
+ *_prompt - print the prompt
+ *@argc: argument counts
+ *@argv: argument vector
+ *
+ *Return: nothing
+*/
+
 void _prompt(int argc, char **argv)
 {
-	char *command = NULL;
+	char *input = NULL;
 	int i = 0;
+
 	while (1)
 	{
 		if (isatty(STDIN_FILENO) == 1)
@@ -10,17 +20,13 @@ void _prompt(int argc, char **argv)
 			write(STDOUT_FILENO, "$ ", 2);
 			fflush(stdout);
 		}
-		command = get_cmd();
-		if (command != NULL)
+		input = read_input();
+		if (input != NULL)
 		{
 			argv = tokenize(command);
 			execute(argc, argv);
-			while (argv[i])
-			{
-				free(argv[i]);
-				i++;
-			}
-			free(argv);
+
+			free_args(argv)
 		}
 		continue;
 		free(command);
