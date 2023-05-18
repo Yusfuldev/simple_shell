@@ -29,7 +29,7 @@ char **tokenize(char *buffer)
 		perror("Error: malloc");
 		free(buf_cp);
 		free(buffer);
-		return(NULL);
+		return (NULL);
 	}
 	token = _strtok(buffer, delim);
 	for (; i <= num_toks && token != NULL; i++)
