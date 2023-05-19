@@ -47,8 +47,11 @@ char *read_input()
 
 void signal_handler(int signum)
 {
-	(void)signum;
-	write(STDOUT_FILENO, "\n$ ", 3);
+	if (signum == SIGINT)
+	{
+		write(STDOUT_FILENO, "\n$ ", 3);
+		fflush(stdout);
+	}
 }
 
 /**
