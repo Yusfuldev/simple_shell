@@ -13,7 +13,7 @@ char *read_input()
 	char *lineptr = NULL;
 
 	read_char = getline(&lineptr, &n, stdin);
-	printf("%s", lineptr);
+	/*printf("%s", lineptr);*/
 
 	if (read_char == -1)
 	{
