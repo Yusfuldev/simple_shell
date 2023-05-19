@@ -12,6 +12,7 @@ char *read_input()
 	size_t n = 0;
 	char *lineptr = NULL;
 
+	signal(SIGINT, signal_handler);
 	read_char = _getline(&lineptr, &n, stdin);
 
 	if (read_char == -1)
@@ -22,6 +23,11 @@ char *read_input()
 		}
 		free(lineptr);
 		exit(EXIT_FAILURE);
+	}
+	if (read_char == 1 && lineptr[0] == '\n')
+	{
+/*		write(STDOUT_FILENO, "\n", 1);*/
+		return (NULL);
 	}
 
 	if (lineptr[read_char - 1] == '\n')
@@ -41,10 +47,8 @@ char *read_input()
 
 void signal_handler(int signum)
 {
-	if (signum == SIGINT)
-	{
-		write(STDOUT_FILENO, "\n", 1);
-	}
+	(void)signum;
+	write(STDOUT_FILENO, "\n$ ", 3);
 }
 
 /**
