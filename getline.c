@@ -3,11 +3,12 @@
  * _getline- reads an entire line from stream.
  * @lineptr: address of buffer containing text.
  * @n: size of buffer
+ *@stream: stream of file
  * Return: Number of bytes read or -1 on error
  */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	static char *buffer = NULL;
+	static char *buffer;
 	ssize_t nbytes = 0;
 	size_t index = 0;
 	char *new_buf = NULL;
