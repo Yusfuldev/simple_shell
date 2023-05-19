@@ -20,5 +20,9 @@ int execute(int ac, char **args);
 char **tokenize(char *buffer);
 char *_strtok(char *str, char *delim);
 char *_strstr(char *haystack, char *needle);
+char *_getenv(const char *name);
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+void printenv(void);
+char *path_handler(char **argv);
 
 #endif
