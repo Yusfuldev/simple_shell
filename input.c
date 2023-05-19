@@ -12,7 +12,7 @@ char *read_input()
 	size_t n = 0;
 	char *lineptr = NULL;
 
-	read_char = _getline(&lineptr, &n, stdin);
+	read_char = getline(&lineptr, &n, stdin);
 	/*printf("%s", lineptr);*/
 
 	if (read_char == -1)
