@@ -8,24 +8,25 @@
 
 char *_strtok(char *str, char *delim)
 {
-        char *token = NULL, *delimpos = NULL;
-        static char *next_token = NULL;
+	char *token = NULL, *delimpos = NULL;
+	static char *next_token;
 
-        if (str != NULL)
-                next_token = str;
-        if (!next_token || *next_token == '\0')
-                return (NULL);
-        token = next_token;
-        delimpos = _strstr(next_token, delim);
-        if (delimpos != NULL)
-        {
-                *delimpos = '\0';
-                next_token = delimpos + strlen(delim);
-        } else
-        {
-                next_token += strlen(next_token);
-        }
-        return (token);
+	if (str != NULL)
+		next_token = str;
+	if (!next_token || *next_token == '\0')
+		return (NULL);
+	token = next_token;
+	delimpos = _strstr(next_token, delim);
+	if (delimpos != NULL)
+	{
+		*delimpos = '\0';
+		next_token = delimpos + strlen(delim);
+	}
+	else
+	{
+		next_token += strlen(next_token);
+	}
+	return (token);
 }
 
 /**
