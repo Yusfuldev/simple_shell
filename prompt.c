@@ -19,6 +19,7 @@ void _prompt(int argc, char **argv)
 			write(STDOUT_FILENO, "$ ", 2);
 			fflush(stdout);
 		}
+
 		input = read_input();
 		if (input != NULL)
 		{
