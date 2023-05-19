@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * path_handler- finds the valid path to a command.
- * @arg: command's path to find.
+ * @argv: command's path to find.
  * Return: valid path or NULL if path not found.
  */
 char *path_handler(char **argv)
