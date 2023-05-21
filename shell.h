@@ -11,6 +11,17 @@
 #include <fcntl.h>
 #include <dirent.h>
 
+int ch_dir(int ac, char **args);
+int printenv(int ac, char **args);
+int _exitt(int ac, char **args);
+void update_dir();
+typedef struct builtin
+{
+	char *name;
+	int (*func)(int, char **);
+} builtins_t;
+
+extern builtins_t built_ins[];
 extern char **environ;
 void _prompt(int argc, char **argv);
 char *read_input();
@@ -22,7 +33,6 @@ char *_strtok(char *str, char *delim);
 char *_strstr(char *haystack, char *needle);
 char *_getenv(const char *name);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
-void printenv(void);
 char *path_handler(char **argv);
 
 #endif

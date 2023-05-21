@@ -8,28 +8,20 @@
 
 int execute(int ac, char **args)
 {
-	int status = 0, exit_status = 0;
+	int status = 0, i = 0;
 	char *command = NULL;
 	pid_t child_pid;
 	char *message;
 
-	if (strcmp(args[0], "env") == 0)
+	while (built_ins[i].name != NULL)
 	{
-		printenv();
-		return (1);
-	}
-	if (strcmp(args[0], "exit") == 0)
-	{
-		if (args[1] != NULL)
+		if (strcmp(built_ins[i].name, args[0]) == 0)
 		{
-			exit_status = atoi(args[1]);
+			return (built_ins[i].func(ac, args));
 		}
-		else
-		{
-			exit_status = 0;
-		}
-		exit(exit_status);
+		i++;
 	}
+
 	command = path_handler(args);
 	if (command == NULL)
 	{
@@ -43,16 +35,12 @@ int execute(int ac, char **args)
 	if (child_pid < 0)
 	{
 		perror("Error: fork");
-		fflush(stderr);
 		return (1);
 	}
 	if (child_pid == 0)
 	{
 		if (execve(command, args, environ) < 0)
-		{
 			perror("./hsh");
-			fflush(stderr);
-		}
 		exit(EXIT_FAILURE);
 	}
 	wait(&status);
