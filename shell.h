@@ -11,14 +11,14 @@
 #include <fcntl.h>
 #include <dirent.h>
 
-int ch_dir(int ac, char **args);
-int printenv(int ac, char **args);
-int _exitt(int ac, char **args);
-void update_dir();
+int ch_dir(char **args);
+int printenv(char **args);
+int _exitt(char **args);
+void update_dir(char *pwd);
 typedef struct builtin
 {
 	char *name;
-	int (*func)(int, char **);
+	int (*func)(char **);
 } builtins_t;
 
 extern builtins_t built_ins[];

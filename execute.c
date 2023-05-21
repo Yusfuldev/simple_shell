@@ -17,7 +17,7 @@ int execute(int ac, char **args)
 	{
 		if (strcmp(built_ins[i].name, args[0]) == 0)
 		{
-			return (built_ins[i].func(ac, args));
+			return (built_ins[i].func(args));
 		}
 		i++;
 	}
