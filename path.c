@@ -34,6 +34,7 @@ char *path_handler(char **argv)
 		free(path_cp);
 		return (argv[0]);
 	}
+	free(command);
 	free(path_cp);
 	return (NULL);
 }

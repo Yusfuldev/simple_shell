@@ -27,6 +27,7 @@ char *read_input()
 	if (read_char == 1 && lineptr[0] == '\n')
 	{
 /*		write(STDOUT_FILENO, "\n", 1);*/
+		free(lineptr);
 		return (NULL);
 	}
 

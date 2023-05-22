@@ -10,7 +10,9 @@
 
 void _prompt(int argc, char **argv)
 {
+	int i = 0;
 	char *input = NULL;
+	char **command = NULL;
 
 	while (1)
 	{
@@ -23,12 +25,18 @@ void _prompt(int argc, char **argv)
 		input = read_input();
 		if (input != NULL)
 		{
-			argv = tokenize(input);
-			execute(argc, argv);
+			command = tokenize(input, ";");
+			i = 0;
+			while (command[i] != NULL)
+			{
+				argv = tokenize(command[i], " ");
+				execute(argc, argv);
+				i++;
+			}
 
-			free_args(argv);
+			free_args(command);
 		}
-		continue;
 		free(input);
+		continue;
 	}
 }

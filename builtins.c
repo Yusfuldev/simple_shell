@@ -11,17 +11,16 @@ int ch_dir(char **args)
 	char *old_dir = _getenv("OLDPWD");
 	char *pwd = _getenv("PWD");
 
+	if (args[1] == NULL)
+	{
+		printf("HOME");
+		return (1);
+	}
 	if (strcmp(args[1], "-") == 0)
 	{
 		if (chdir(old_dir) < 0)
 			perror("chdir");
 		update_dir(pwd);
-		return (1);
-	}
-	/* Gives core dumped error to be fixed later*/
-	if (args[1] == NULL)
-	{
-		printf("home");
 		return (1);
 	}
 	if (chdir(args[1]) < 0)

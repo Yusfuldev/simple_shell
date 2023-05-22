@@ -27,12 +27,23 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 			buf_size += BUFSIZ;
 			new_buf = realloc(buffer, buf_size);
 			if (!new_buf)
+			{
+				free(buffer);
+				buffer = NULL;
 				return (-1);
+			}
+			free(buffer);
 			buffer = new_buf;
 		}
 		nbytes = read(fileno(stream), &ch, 1);
 		if (nbytes <= 0)
+		{
+			free(buffer);
+			buffer = NULL;
+			if (bytes_read > 0)
+				return (bytes_read);
 			return (-1);
+		}
 		buffer[index] = ch;
 		index++;
 		bytes_read++;
