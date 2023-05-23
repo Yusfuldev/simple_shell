@@ -15,7 +15,7 @@ int execute(int ac, char **args)
 
 	while (built_ins[i].name != NULL)
 	{
-		if (strcmp(built_ins[i].name, args[0]) == 0)
+		if (my_strcmp(built_ins[i].name, args[0]) == 0)
 		{
 			return (built_ins[i].func(args));
 		}
@@ -25,9 +25,9 @@ int execute(int ac, char **args)
 	command = path_handler(args);
 	if (command == NULL)
 	{
-		write(STDOUT_FILENO, args[0], strlen(args[0]));
+		write(STDOUT_FILENO, args[0], my_strlen(args[0]));
 		message = ": not found\n";
-		write(STDERR_FILENO, message, strlen(message));
+		write(STDERR_FILENO, message, my_strlen(message));
 		return (1);
 	}
 	(void)ac;
