@@ -44,7 +44,5 @@ int execute(int ac, char **args)
 		exit(EXIT_FAILURE);
 	}
 	wait(&status);
-	free(command);
-	free_args(args);
 	return (1);
 }
