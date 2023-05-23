@@ -17,6 +17,11 @@ char *path_handler(char **argv)
 	while (token)
 	{
 		command = malloc(sizeof(char) * (strlen(token) + arg_len + 2));
+		if (!command)
+		{
+			free(path_cp);
+			return (NULL);
+		}
 		strcpy(command, token);
 		strcat(command, "/");
 		strcat(command, argv[0]);
@@ -32,6 +37,7 @@ char *path_handler(char **argv)
 	if (stat(argv[0], &st) == 0)
 	{
 		free(path_cp);
+		free(command);
 		return (argv[0]);
 	}
 	free(command);

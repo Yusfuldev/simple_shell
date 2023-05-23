@@ -15,6 +15,8 @@ int ch_dir(char **args);
 int printenv(char **args);
 int _exitt(char **args);
 void update_dir(char *pwd);
+int _unsetenv(char **args);
+int _setenv(char **args);
 typedef struct builtin
 {
 	char *name;

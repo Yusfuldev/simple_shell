@@ -23,9 +23,12 @@ char **tokenize(char *buffer, char *delim)
 	e = buf_cp;	/* remove trailing spaces */
 	while (*e != '\0')
 		e++;
-	while (*e == ' ')
-		e--;
-	*(e + 1) = '\0';
+	if (*e == ' ')
+	{
+		while (*e == ' ')
+			e--;
+		*(e + 1) = '\0';
+	}
 	token = _strtok(buf_cp, delim);
 	while (token != NULL)	/* get number of tokens*/
 	{
