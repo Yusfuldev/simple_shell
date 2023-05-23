@@ -16,7 +16,7 @@ int ch_dir(char **args)
 		printf("HOME");
 		return (1);
 	}
-	if (strcmp(args[1], "-") == 0)
+	if (my_strcmp(args[1], "-") == 0)
 	{
 		if (chdir(old_dir) < 0)
 			perror("chdir");
