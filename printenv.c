@@ -14,7 +14,7 @@ int printenv(char **args)
 	(void)args;
 	while (k[i])
 	{
-		write(STDOUT_FILENO, k[i], strlen(k[i]));
+		write(STDOUT_FILENO, k[i], my_strlen(k[i]));
 		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}

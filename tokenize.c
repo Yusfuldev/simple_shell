@@ -13,7 +13,7 @@ char **tokenize(char *buffer, char *delim)
 	while(*buffer == ' ')	/* remove preceding spaces */
 		buffer++;
 
-	buf_cp = strdup(buffer);
+	buf_cp = my_strdup(buffer);
 	if (!buf_cp)
 	{
 		perror("strdup");
@@ -44,7 +44,7 @@ char **tokenize(char *buffer, char *delim)
 	token = _strtok(buffer, delim);
 	for (; i < num_toks && token != NULL; i++)
 	{
-		args[i] = strdup(token);
+		args[i] = my_strdup(token);
 		token = _strtok(NULL, delim);
 	}
 	args[i] = NULL;

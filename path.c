@@ -8,19 +8,19 @@ char *path_handler(char **argv)
 {
 	char *path = NULL, *path_cp = NULL;
 	char *token = NULL, *command = NULL;
-	int arg_len = strlen(argv[0]);
+	int arg_len = my_strlen(argv[0]);
 	struct stat st;
 
 	path = _getenv("PATH");
-	path_cp = strdup(path);
+	path_cp = my_strdup(path);
 	token = _strtok(path_cp, ":");
 	while (token)
 	{
-		command = malloc(sizeof(char) * (strlen(token) + arg_len + 2));
-		strcpy(command, token);
-		strcat(command, "/");
-		strcat(command, argv[0]);
-		strcat(command, "\0");
+		command = malloc(sizeof(char) * (my_strlen(token) + arg_len + 2));
+		my_strcpy(command, token);
+		my_strcat(command, "/");
+		my_strcat(command, argv[0]);
+		my_strcat(command, "\0");
 		if (stat(command, &st) == 0)
 		{
 			free(path_cp);
