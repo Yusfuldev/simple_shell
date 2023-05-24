@@ -32,6 +32,7 @@ typedef struct builtin
 	char *name;
 	int (*func)(char **);
 } builtins_t;
+builtins_t *get_builtins(void);
 
 extern builtins_t built_ins[];
 extern char **environ;

@@ -12,7 +12,9 @@ int execute(int ac, char **args)
 	char *command = NULL;
 	pid_t child_pid;
 	char *message;
+	builtins_t *built_ins;
 
+	built_ins = get_builtins();
 	while (built_ins[i].name != NULL)
 	{
 		if (my_strcmp(built_ins[i].name, args[0]) == 0)
@@ -21,7 +23,6 @@ int execute(int ac, char **args)
 		}
 		i++;
 	}
-
 	command = path_handler(args);
 	if (command == NULL)
 	{
@@ -45,6 +46,5 @@ int execute(int ac, char **args)
 		exit(EXIT_SUCCESS);
 	}
 	wait(&status);
-
 	return (1);
 }
