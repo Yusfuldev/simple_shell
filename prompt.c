@@ -31,6 +31,7 @@ void _prompt(int argc, char **argv)
 			{
 				argv = tokenize(command[i], " ");
 				execute(argc, argv);
+				free_args(argv);
 				i++;
 			}
 

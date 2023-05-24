@@ -38,10 +38,8 @@ char *path_handler(char **argv)
 	if (stat(argv[0], &st) == 0)
 	{
 		free(path_cp);
-		free(command);
 		return (argv[0]);
 	}
-	free(command);
 	free(path_cp);
 	return (NULL);
 }
