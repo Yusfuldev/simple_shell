@@ -34,6 +34,7 @@ void *_realloc(void *ptr, size_t size)
  * _memcpy - A function that copies memory
  * @dest: memory destination
  * @src: source memory
+ * @num: number of bytes
  *
  *Return: memory destination
  */
