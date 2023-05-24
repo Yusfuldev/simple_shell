@@ -10,6 +10,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <dirent.h>
+#include <limits.h>
+#include <ctype.h>
 
 int ch_dir(char **args);
 int printenv(char **args);
@@ -55,5 +57,6 @@ void* _memcpy(void* dest, const void* src, size_t num);
 char* my_strcpy(char* dest, const char* src);
 char* my_strcat(char* dest, const char* src);
 int my_strncmp(const char* s1, const char* s2, size_t num);
+ int my_atoi(const char *s);
 
 #endif

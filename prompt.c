@@ -13,7 +13,7 @@ void _prompt(int argc, char **argv)
 	int i = 0;
 	char *input = NULL;
 	char **command = NULL;
-	
+
 	while (1)
 	{
 		if (isatty(STDIN_FILENO) == 1)
