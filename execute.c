@@ -25,8 +25,9 @@ int execute(int ac, char **args)
 	command = path_handler(args);
 	if (command == NULL)
 	{
-		write(STDOUT_FILENO, args[0], my_strlen(args[0]));
-		message = ": not found\n";
+		write(STDERR_FILENO, "./hsh: 1: ", 10);
+		write(STDERR_FILENO, args[0], my_strlen(args[0]));
+		message = " : not found\n";
 		write(STDERR_FILENO, message, my_strlen(message));
 		return (1);
 	}
@@ -45,6 +46,5 @@ int execute(int ac, char **args)
 	}
 	wait(&status);
 
-	free(command);
 	return (1);
 }

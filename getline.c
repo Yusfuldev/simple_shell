@@ -20,7 +20,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		if (bytes_read >= (buf_size - 1))
 		{
 			buf_size += BUFSIZ;
-			new_buf = realloc(buffer, buf_size);
+			new_buf = _realloc(buffer, buf_size);
 			if (!new_buf)
 			{
 				free(buffer);
