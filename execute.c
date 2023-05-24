@@ -14,6 +14,8 @@ int execute(int ac, char **args)
 	char *message;
 	builtins_t *built_ins;
 
+	if (my_strcmp(args[0], "exit") == 0 && ac == 1)
+		exit(0);
 	built_ins = get_builtins();
 	while (built_ins[i].name != NULL)
 	{
