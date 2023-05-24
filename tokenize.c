@@ -10,7 +10,6 @@ char **tokenize(char *buffer, char *delim)
 {
 	int num_toks = 0, i = 0;
 	char *token = NULL, *buf_cp = NULL, **args = NULL;
-	char *e = NULL;
 
 	while (*buffer == ' ')	/* remove preceding spaces */
 		buffer++;
@@ -55,6 +54,8 @@ char **tokenize(char *buffer, char *delim)
  */
 void rm_spaces(char *p)
 {
+	char *e = NULL;
+
 	e = p;	/* remove trailing spaces */
 	while (*e != '\0')
 		e++;

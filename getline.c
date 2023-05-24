@@ -9,8 +9,8 @@
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
 	static char *buffer;
-	size_t index = 0, size_t bytes_read = 0, size_t buf_size = BUFSIZ;
-	char *new_buf = NULL, char ch;
+	size_t index = 0, bytes_read = 0, buf_size = BUFSIZ;
+	char *new_buf = NULL, ch;
 
 	if (!lineptr || !n || !stream)
 		return (-1);
@@ -20,7 +20,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		if (bytes_read >= (buf_size - 1))
 		{
 			buf_size += BUFSIZ;
-			new_buf = realloc(buffer, buf_size);
+			new_buf = _realloc(buffer, buf_size);
 			if (!new_buf)
 			{
 				free(buffer);
