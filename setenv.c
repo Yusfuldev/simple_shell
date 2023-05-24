@@ -18,11 +18,9 @@ int _setenv(char **args)
 		perror("setenv");
 		return (1);
 	}
-
 	name_len = my_strlen(name);        /* create new_env */
 	val_len = my_strlen(value);
 	env_len = name_len + val_len + 2;
-
 	new_env = malloc(env_len * sizeof(char *));
 	if (!new_env)
 	{
