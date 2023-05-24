@@ -20,19 +20,19 @@ char *path_handler(char **argv)
 		if (!command)
 		{
 			free(path_cp);
-			return(NULL);
+			return (NULL);
 		}
 		my_strcpy(command, token);
 		my_strcat(command, "/");
 		my_strcat(command, argv[0]);
 		my_strcat(command, "\0");
-		
+
 		if (stat(command, &st) == 0)
 		{
 			free(path_cp);
 			return (command);
 		}
-		free(command);
+		/*free(command);*/
 		token = _strtok(NULL, ":");
 	}
 	if (stat(argv[0], &st) == 0)
