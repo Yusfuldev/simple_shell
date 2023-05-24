@@ -17,6 +17,16 @@ int _exitt(char **args);
 void update_dir(char *pwd);
 int _unsetenv(char **args);
 int _setenv(char **args);
+
+/**
+ * struct builtin - Represents an array of builtin commands.
+ * @name: The name of the command.
+ * @func: The corresponding function for the command.
+ *
+ * Description: This struct represents a builtin command in the shell.
+ * It stores the name of the command and a pointer to the
+ * corresponding function.
+ */
 typedef struct builtin
 {
 	char *name;

@@ -2,7 +2,7 @@
 
 /**
  * printenv - prints all environment variables
- *
+ * @args: arguments.
  * Return: nothing.
  */
 
@@ -25,7 +25,7 @@ int printenv(char **args)
 /**
  * _exitt- exits the shell with status.
  * @args: arguments
- * Returns: exit status.
+ * Return: exit status.
  */
 int _exitt(char **args)
 {
@@ -37,8 +37,11 @@ int _exitt(char **args)
 }
 
 /**
- * buit_ins- array of struts of builtin commands
- * contains list of commands to be carried out by Pp.
+ * built_ins - Array of structs for builtin commands.
+ *
+ * Description: This array stores a list of builtin commands and their
+ * corresponding functions.
+ * The commands can be executed by the parent process.
  */
 builtins_t built_ins[] = {
 	{"cd", ch_dir},
