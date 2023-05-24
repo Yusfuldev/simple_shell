@@ -22,7 +22,7 @@ char *read_input()
 			write(STDOUT_FILENO, "\n", 1);
 		}
 		free(lineptr);
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 	}
 	if (read_char == 1 && lineptr[0] == '\n')
 	{
