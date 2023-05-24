@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
- * _setenv- updates or create an environment variable.
- * @nsrgs: arguments
+ * _setenv - updates or create an environment variable.
+ * @args: arguments
  * Return: 0 or -1 on error.
  */
 
@@ -19,8 +19,8 @@ int _setenv(char **args)
 		return (1);
 	}
 
-	name_len = strlen(name);        /* create new_env */
-	val_len = strlen(value);
+	name_len = my_strlen(name);        /* create new_env */
+	val_len = my_strlen(value);
 	env_len = name_len + val_len + 2;
 
 	new_env = malloc(env_len * sizeof(char *));
@@ -29,14 +29,15 @@ int _setenv(char **args)
 		perror("setenv");
 		return (1);
 	}
-	strcpy(new_env, name);
-	strcat(new_env, "=");
-	strcat(new_env, value);
-	strcat(new_env, "\0");
+	my_strcpy(new_env, name);
+	my_strcat(new_env, "=");
+	my_strcat(new_env, value);
+	my_strcat(new_env, "\0");
 
 	while (environ[i] != NULL)
 	{
-		if (strncmp(environ[i], name, name_len) == 0 && environ[i][name_len] == '=')
+		if (my_strncmp(environ[i], name, name_len) == 0
+&& environ[i][name_len] == '=')
 		{
 			free(environ[i]);
 			environ[i] = new_env;

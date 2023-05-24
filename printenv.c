@@ -23,7 +23,7 @@ int printenv(char **args)
 
 
 /**
- * _exitt- exits the shell with status.
+ * _exitt - exits the shell with status.
  * @args: arguments
  * Returns: exit status.
  */
@@ -37,7 +37,7 @@ int _exitt(char **args)
 }
 
 /**
- * buit_ins- array of struts of builtin commands
+ * buit_ins - array of struts of builtin commands
  * contains list of commands to be carried out by Pp.
  */
 builtins_t built_ins[] = {

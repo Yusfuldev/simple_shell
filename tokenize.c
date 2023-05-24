@@ -10,7 +10,7 @@ char **tokenize(char *buffer, char *delim)
 	char *token = NULL, *buf_cp = NULL, **args = NULL;
 	char *e = NULL;
 
-	while(*buffer == ' ')	/* remove preceding spaces */
+	while (*buffer == ' ')	/* remove preceding spaces */
 		buffer++;
 
 	buf_cp = my_strdup(buffer);
