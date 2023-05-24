@@ -56,5 +56,5 @@ int my_atoi(const char *s)
 		i++;
 
 	}
-	return (int)(result * sign);
+	return ((int)(result * sign));
 }
