@@ -32,7 +32,7 @@ char *path_handler(char **argv)
 			free(path_cp);
 			return (command);
 		}
-		/*free(command);*/
+		free(command);
 		token = _strtok(NULL, ":");
 	}
 	if (stat(argv[0], &st) == 0)
