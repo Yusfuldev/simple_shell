@@ -42,7 +42,7 @@ int execute(int ac, char **args)
 	{
 		if (execve(command, args, environ) < 0)
 			perror("./hsh");
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 	}
 	wait(&status);
 
