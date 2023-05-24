@@ -46,6 +46,5 @@ int execute(int ac, char **args)
 	}
 	wait(&status);
 
-	free(command);
 	return (1);
 }
