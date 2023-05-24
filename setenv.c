@@ -1,8 +1,8 @@
 #include "shell.h"
 /**
- * _setenv - updates or create an environment variable.
+ * _setenv- updates or create an environment variable.
  * @args: arguments
- * Return: 0 or -1 on error.
+ * Return: 1 for loop to continue.
  */
 
 int _setenv(char **args)

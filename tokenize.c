@@ -1,7 +1,9 @@
 #include "shell.h"
+void rm_spaces(char *p);
 /**
  * tokenize- tokenize the command entered by user.
  * @buffer: buffer to tokenize.
+ * @delim: delimeter.
  * Return: array of tokenized commands.
  */
 char **tokenize(char *buffer, char *delim)
@@ -20,22 +22,13 @@ char **tokenize(char *buffer, char *delim)
 		free(buffer);
 		return (NULL);
 	}
-	e = buf_cp;	/* remove trailing spaces */
-	while (*e != '\0')
-		e++;
-	if (*e == ' ')
-	{
-		while (*e == ' ')
-			e--;
-		*(e + 1) = '\0';
-	}
+	rm_spaces(buf_cp);
 	token = _strtok(buf_cp, delim);
 	while (token != NULL)	/* get number of tokens*/
 	{
 		num_toks++;
 		token = _strtok(NULL, delim);
 	}
-
 	args = malloc(sizeof(char *) * (num_toks + 1));
 	if (!args)
 	{
@@ -53,4 +46,22 @@ char **tokenize(char *buffer, char *delim)
 	args[i] = NULL;
 	free(buf_cp);
 	return (args);
+}
+
+/**
+ * rm_spaces- removes trailing spaces from buffer.
+ * @p: buffer to remove space from
+ * Return: nothing
+ */
+void rm_spaces(char *p)
+{
+	e = p;	/* remove trailing spaces */
+	while (*e != '\0')
+		e++;
+	if (*e == ' ')
+	{
+		while (*e == ' ')
+			e--;
+		*(e + 1) = '\0';
+	}
 }

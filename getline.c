@@ -9,16 +9,11 @@
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
 	static char *buffer;
-	ssize_t nbytes = 0;
-	size_t index = 0;
-	char *new_buf = NULL;
-	char ch;
-	size_t bytes_read = 0;
-	size_t buf_size = 0;
+	size_t index = 0, size_t bytes_read = 0, size_t buf_size = BUFSIZ;
+	char *new_buf = NULL, char ch;
 
 	if (!lineptr || !n || !stream)
 		return (-1);
-	buf_size = BUFSIZ;
 	buffer = malloc(buf_size);
 	while (1)
 	{
@@ -35,8 +30,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 			free(buffer);
 			buffer = new_buf;
 		}
-		nbytes = read(fileno(stream), &ch, 1);
-		if (nbytes <= 0)
+		if ((read(fileno(stream), &ch, 1)) <= 0)
 		{
 			free(buffer);
 			buffer = NULL;
@@ -45,8 +39,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 			return (-1);
 		}
 		buffer[index] = ch;
-		index++;
-		bytes_read++;
+		index++, bytes_read++;
 		if (buffer[index - 1] == '\n')
 			break;
 	}
