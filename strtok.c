@@ -20,11 +20,11 @@ char *_strtok(char *str, char *delim)
 	if (delimpos != NULL)
 	{
 		*delimpos = '\0';
-		next_token = delimpos + strlen(delim);
+		next_token = delimpos + my_strlen(delim);
 	}
 	else
 	{
-		next_token += strlen(next_token);
+		next_token += my_strlen(next_token);
 	}
 	return (token);
 }

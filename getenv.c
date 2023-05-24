@@ -14,8 +14,9 @@ char *_getenv(const char *name)
 
 	while (k[i])
 	{
-		if (strncmp(k[i], name, strlen(name)) == 0 && k[i][strlen(name)] == '=')
-			return (&k[i][strlen(name) + 1]);
+		if (my_strncmp(k[i], name, my_strlen(name)) == 0
+&& k[i][my_strlen(name)] == '=')
+			return (&k[i][my_strlen(name) + 1]);
 		i++;
 	}
 	return (NULL);
