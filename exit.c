@@ -8,10 +8,9 @@ int _exitt(char **args)
 {
 	int exit_status = 0;
 
-	if (args[1] != NULL)
-	{
-		exit_status = my_atoi(args[1]);
-	}
+	if (args[1] == NULL)
+		exit(EXIT_SUCCESS);
+	exit_status = my_atoi(args[1]);
 	exit(exit_status);
 }
 
