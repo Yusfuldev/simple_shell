@@ -23,6 +23,7 @@ int execute(int ac, char **args)
 		}
 		i++;
 	}
+
 	command = path_handler(args);
 	if (command == NULL)
 	{
@@ -46,5 +47,6 @@ int execute(int ac, char **args)
 		exit(EXIT_SUCCESS);
 	}
 	wait(&status);
+
 	return (1);
 }

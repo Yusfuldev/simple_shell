@@ -12,11 +12,7 @@ char *path_handler(char **argv)
 	struct stat st;
 
 	path = _getenv("PATH");
-	if (!path)
-		return (NULL);
 	path_cp = my_strdup(path);
-	if (!path_cp)
-		return (NULL);
 	token = _strtok(path_cp, ":");
 	while (token)
 	{
@@ -29,7 +25,7 @@ char *path_handler(char **argv)
 		my_strcpy(command, token);
 		my_strcat(command, "/");
 		my_strcat(command, argv[0]);
-		/*my_strcat(command, "\0");*/
+		my_strcat(command, "\0");
 
 		if (stat(command, &st) == 0)
 		{
