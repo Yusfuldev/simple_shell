@@ -23,7 +23,7 @@ int execute(int ac, char **args)
 		}
 		i++;
 	}
-	if ((strstr(args[0], "/")) == NULL)
+	if ((_strstr(args[0], "/")) == NULL)
 	{
 		command = path_handler(args);
 		if (command == NULL)
