@@ -30,8 +30,6 @@ void _prompt(int argc, char **argv)
 			while (command[i] != NULL)
 			{
 				argv = tokenize(command[i], " ");
-				if (my_strcmp(argv[0], "exit") == 0 && argc == 1)
-					exit(EXIT_SUCCESS);
 				execute(argc, argv);
 				free_args(argv);
 				i++;
