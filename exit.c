@@ -15,6 +15,36 @@ int _exitt(char **args)
 }
 
 /**
+ * my_isspace - checs for whitespace character
+ * @c: character input
+ *
+ * Return: 0 always
+ */
+int my_isspace(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r')
+	{
+		return (1);
+	}
+	return (0);
+}
+
+/**
+ * my_isdigit - check if it is a digit
+ * @c: digit input
+ *
+ *Return: 0 always
+ */
+int my_isdigit(char c)
+{
+	if (c >= '0' && c <= '9')
+	{
+		return (1);
+	}
+	return (0);
+}
+
+/**
  * my_atoi - a custom function that converts a string to integer
  *@s: input string
  *
@@ -28,7 +58,7 @@ int my_atoi(const char *s)
 	if (s == NULL)
 		return (0);
 
-	while (isspace((unsigned char)s[i]))
+	while (my_isspace(s[i]))
 	{
 		i++;
 	}
@@ -40,7 +70,7 @@ int my_atoi(const char *s)
 		i++;
 	}
 
-	while (isdigit((unsigned char)s[i]))
+	while (my_isdigit(s[i]))
 	{
 		result = result * 10 + (s[i] - '0');
 

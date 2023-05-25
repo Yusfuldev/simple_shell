@@ -58,5 +58,7 @@ char *my_strcpy(char *dest, const char *src);
 char *my_strcat(char *dest, const char *src);
 int my_strncmp(const char *s1, const char *s2, size_t num);
 int my_atoi(const char *s);
+int my_isdigit(char c);
+int my_isspace(char c);
 
 #endif

@@ -56,7 +56,7 @@ void signal_handler(int signum)
 }
 
 /**
- *free_args - free all the array of arguments
+ *free_args - frees all argument arrays
  *@argv: parsed arguments
  *
  *Return: Nothing
