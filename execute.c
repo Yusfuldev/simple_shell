@@ -6,14 +6,13 @@
  * Return: 1 to main to continue loop
  */
 
-int execute(int ac, char **args)
+int execute(int ac, char **args, char *path)
 {
 	int i = 0;
-	char *command = NULL;
+/*	char *command = NULL;*/
 	char *message = NULL;
 	builtins_t *built_ins;
 
-	command = args[0];
 	built_ins = get_builtins();
 	while (built_ins[i].name != NULL)
 	{
@@ -23,10 +22,11 @@ int execute(int ac, char **args)
 		}
 		i++;
 	}
+	/**
 	if ((_strstr(args[0], "/")) == NULL)
 	{
-		command = path_handler(args);
-		if (command == NULL)
+		command = path_handler(args);*/
+		if (path == NULL)
 		{
 			write(STDERR_FILENO, "./hsh: 1: ", 10);
 			write(STDERR_FILENO, args[0], my_strlen(args[0]));
@@ -34,9 +34,8 @@ int execute(int ac, char **args)
 			write(STDERR_FILENO, message, my_strlen(message));
 			return (1);
 		}
-	}
 	(void)ac;
-	return (process(command, args));
+	return (process(path, args));
 }
 /**
  * process- creates a process.

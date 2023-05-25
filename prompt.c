@@ -13,6 +13,7 @@ void _prompt(int argc, char **argv)
 	int i = 0;
 	char *input = NULL;
 	char **command = NULL;
+	char *path = NULL; 
 
 	while (1)
 	{
@@ -30,11 +31,12 @@ void _prompt(int argc, char **argv)
 			while (command[i] != NULL)
 			{
 				argv = tokenize(command[i], " ");
-				execute(argc, argv);
+				path = path_handler(argv);
+				execute(argc, argv, path);
 				free_args(argv);
+				free(path);
 				i++;
 			}
-
 			free_args(command);
 		}
 		free(input);

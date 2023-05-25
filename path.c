@@ -35,13 +35,11 @@ char *path_handler(char **argv)
 		free(command);
 		token = _strtok(NULL, ":");
 	}
-	/**
-	 * if (stat(argv[0], &st) == 0)
+	if (stat(argv[0], &st) == 0)
 	{
 		free(path_cp);
 		return (argv[0]);
 	}
-	*/
 	free(path_cp);
 	return (NULL);
 }
