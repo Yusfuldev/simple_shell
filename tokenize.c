@@ -11,7 +11,7 @@ char **tokenize(char *buffer, char *delim)
 	int num_toks = 0, i = 0;
 	char *token = NULL, *buf_cp = NULL, **args = NULL;
 
-	while (*buffer == ' ')	/* remove preceding spaces */
+	while (*buffer == ' ')	 /*remove preceding spaces */
 		buffer++;
 
 	buf_cp = my_strdup(buffer);

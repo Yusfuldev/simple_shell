@@ -8,12 +8,12 @@
 
 int execute(int ac, char **args)
 {
-	int status = 0, i = 0;
+	int i = 0;
 	char *command = NULL;
-	pid_t child_pid;
 	char *message = NULL;
 	builtins_t *built_ins;
 
+	command = args[0];
 	built_ins = get_builtins();
 	while (built_ins[i].name != NULL)
 	{
@@ -23,16 +23,32 @@ int execute(int ac, char **args)
 		}
 		i++;
 	}
-	command = path_handler(args);
-	if (command == NULL)
+	if ((strstr(args[0], "/")) == NULL)
 	{
-		write(STDERR_FILENO, "./hsh: 1: ", 10);
-		write(STDERR_FILENO, args[0], my_strlen(args[0]));
-		message = " : not found\n";
-		write(STDERR_FILENO, message, my_strlen(message));
-		return (1);
+		command = path_handler(args);
+		if (command == NULL)
+		{
+			write(STDERR_FILENO, "./hsh: 1: ", 10);
+			write(STDERR_FILENO, args[0], my_strlen(args[0]));
+			message = " : not found\n";
+			write(STDERR_FILENO, message, my_strlen(message));
+			return (1);
+		}
 	}
 	(void)ac;
+	return (process(command, args));
+}
+/**
+ * process- creates a process.
+ * @command: command to execute
+ * @args: arguments
+ * Return: 1
+ */
+int process(char *command, char **args)
+{
+	pid_t child_pid;
+	int status = 0;
+
 	child_pid = fork();
 	if (child_pid < 0)
 	{
