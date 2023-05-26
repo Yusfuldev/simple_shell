@@ -9,12 +9,10 @@
 int execute(int ac, char **args)
 {
 	int status = 0, i = 0;
-	char *command = NULL;
+	/*char *result = NULL;*/
 	pid_t child_pid;
 	char *message;
-	builtins_t *built_ins;
 
-	built_ins = get_builtins();
 	while (built_ins[i].name != NULL)
 	{
 		if (my_strcmp(built_ins[i].name, args[0]) == 0)
@@ -24,8 +22,8 @@ int execute(int ac, char **args)
 		i++;
 	}
 
-	command = path_handler(args);
-	if (command == NULL)
+	args[0] = path_handler(args);
+	if (args == NULL)
 	{
 		write(STDERR_FILENO, "./hsh: 1: ", 10);
 		write(STDERR_FILENO, args[0], my_strlen(args[0]));
@@ -42,7 +40,7 @@ int execute(int ac, char **args)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(command, args, environ) < 0)
+		if (execve(args[0], args, environ) < 0)
 			perror("./hsh");
 		exit(EXIT_SUCCESS);
 	}

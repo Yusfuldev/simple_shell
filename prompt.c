@@ -30,12 +30,14 @@ void _prompt(int argc, char **argv)
 			while (command[i] != NULL)
 			{
 				argv = tokenize(command[i], " ");
+				/*result = path_handler(argv);*/
 				execute(argc, argv);
 				free_args(argv);
 				i++;
 			}
 
 			free_args(command);
+			/*free(result);*/
 		}
 		free(input);
 		continue;

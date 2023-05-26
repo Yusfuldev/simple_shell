@@ -60,26 +60,30 @@ size_t my_strlen(const char *s)
  * my_strdup - a function that duplicates a string
  * @s: string
  *
- * Return:duplicated string
+ * Return: duplicated string
  */
 char *my_strdup(const char *s)
 {
-	size_t length;
 	char *dup;
+	unsigned int i, j;
 
 	if (s == NULL)
 	{
 		return (NULL);
 	}
-	length = my_strlen(s) + 1;
-	dup = malloc(length);
-/*	dup = malloc((length + 1) * sizeof(char));*/
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		;
+	}
+	dup = (char *) malloc(sizeof(char) * (i + 1));
 
 	if (dup == NULL)
 	{
 		return (NULL);
 	}
-	my_strcpy(dup, s);
+	for (j = 0; j <= i; j++)
+		dup[j] =  s[j];
+
 	return (dup);
 }
 

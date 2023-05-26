@@ -35,7 +35,6 @@ void *_realloc(void *ptr, size_t size)
  * @dest: memory destination
  * @src: source memory
  * @num: number of bytes
- *
  *Return: memory destination
  */
 void *_memcpy(void *dest, const void *src, size_t num)

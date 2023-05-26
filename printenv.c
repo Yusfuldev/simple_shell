@@ -1,9 +1,11 @@
 #include "shell.h"
+
 /**
  * printenv - prints all environment variables
  * @args: arguments.
  * Return: nothing.
  */
+
 int printenv(char **args)
 {
 	char **k = environ;
@@ -18,23 +20,20 @@ int printenv(char **args)
 	}
 	return (1);
 }
-/**
- * get_builtins- initialise an array of structs.
- *
- * Return: struct pointer to the initialised array.
- */
-builtins_t *get_builtins(void)
-{
-	builtins_t *ptr;
 
-	builtins_t built_ins[] = {
-		{"cd", ch_dir},
-		{"env", printenv},
-		{"exit", _exitt},
-		{"setenv", _setenv},
-		{"unsetenv", _unsetenv},
-		{NULL, NULL}
-	};
-	ptr = built_ins;
-	return (ptr);
-}
+
+/**
+ * built_ins - Array of structs for builtin commands.
+ *
+ * Description: This array stores a list of builtin commands and their
+ * corresponding functions.
+ * The commands can be executed by the parent process.
+ */
+builtins_t built_ins[] = {
+	{"cd", ch_dir},
+	{"env", printenv},
+	{"exit", _exitt},
+	{"setenv", _setenv},
+	{"unsetenv", _unsetenv},
+	{NULL, NULL}
+};
