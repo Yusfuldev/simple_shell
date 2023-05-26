@@ -5,6 +5,40 @@
  * Return: 1 for loop to continue.
  */
 
+int builtin_handler(char **args)
+{
+	int num = 6, i = 0;
+	char *builtins[] = {"exit", "cd", "setenv", "unsetenv", "env", NULL};
+
+	for (; i < num; i++)
+	{
+		if (my_strcmp(args[0], builtins[i]) == 0)
+		{
+			switch (i + 1)
+			{
+				case 1:
+					_exitt(args);
+					return (1);
+				case 2:
+					ch_dir(args);
+					return (1);
+				case 3:
+					_setenv(args);
+					return (1);
+				case 4:
+					_unsetenv(args);
+					return (1);
+				case 5:
+					printenv(args);
+					return (1);
+				default:
+					break;
+			}
+		}
+	}
+	return (0);
+}
+
 int ch_dir(char **args)
 {
 	char *old_dir = _getenv("OLDPWD");

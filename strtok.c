@@ -13,8 +13,10 @@ char *_strtok(char *str, char *delim)
 
 	if (str != NULL)
 		next_token = str;
-	if (!next_token || *next_token == '\0')
+	else if (!next_token || *next_token == '\0')
 		return (NULL);
+	while (my_isspace(*next_token))
+		next_token++;
 	token = next_token;
 	delimpos = _strstr(next_token, delim);
 	if (delimpos != NULL)
@@ -24,9 +26,14 @@ char *_strtok(char *str, char *delim)
 	}
 	else
 	{
-		next_token += my_strlen(next_token);
+		next_token = NULL;
 	}
-	return (token);
+	if (next_token != NULL && *next_token != '\0')
+	{
+		while (my_isspace(*next_token))
+			next_token++;
+	}
+		return (token);
 }
 
 /**
