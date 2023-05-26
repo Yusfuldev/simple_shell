@@ -43,7 +43,7 @@ char *read_input();
 void free_args(char **argv);
 void signal_handler(int signum);
 int process(char *command, char **args);
-int execute(int ac, char **args, char *path);
+int execute(int ac, char **args);
 char **tokenize(char *buffer, char *delim);
 char *_strtok(char *str, char *delim);
 char *_strstr(char *haystack, char *needle);
