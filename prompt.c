@@ -13,7 +13,7 @@ void _prompt(int argc, char **argv)
 	int i = 0;
 	char *input = NULL;
 	char **command = NULL;
-	char *path = NULL; 
+	char *path = NULL;
 
 	while (1)
 	{
