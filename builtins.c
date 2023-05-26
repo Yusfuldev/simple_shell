@@ -1,8 +1,8 @@
 #include "shell.h"
 /**
- * ch_dir- changes the current working directory
- * @args: command/path to change to
- * Return: 1 for loop to continue.
+ * builtin_handler - check and execute if command is a builtin.
+ * @args: command
+ * Return: 1 for loop to continue or 0 not a builtin.
  */
 
 int builtin_handler(char **args)
@@ -39,6 +39,11 @@ int builtin_handler(char **args)
 	return (0);
 }
 
+/**
+ * ch_dir- changes the current working directory
+ * @args: command/path
+ * Return: 1
+ */
 int ch_dir(char **args)
 {
 	char *old_dir = _getenv("OLDPWD");

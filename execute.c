@@ -29,7 +29,6 @@ int execute(int ac, char **args)
 
 /**
  * process- creates a process.
- * @command: command to execute
  * @args: arguments
  * Return: 1
  */
