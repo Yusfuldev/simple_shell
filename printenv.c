@@ -8,10 +8,11 @@
 
 int printenv(char **args)
 {
-	char **k = environ;
+	char **k = NULL;
 	int i = 0;
 
 	(void)args;
+	k = environ;
 	while (k[i])
 	{
 		write(STDOUT_FILENO, k[i], my_strlen(k[i]));

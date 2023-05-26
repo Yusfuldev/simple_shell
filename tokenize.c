@@ -13,6 +13,7 @@ char **tokenize(char *buffer, char *delim)
 
 	if (buffer == NULL || *buffer == '\0')
 		return (NULL);
+
 	buf_cp = my_strdup(buffer);
 	if (!buf_cp)
 	{
