@@ -8,7 +8,6 @@
 
 int execute(int ac, char **args)
 {
-/*	char *command = NULL;*/
 	char *message = NULL;
 
 	builtin_handler(args);
@@ -52,5 +51,6 @@ int process(char **args)
 		exit(EXIT_SUCCESS);
 	}
 	wait(&status);
+
 	return (1);
 }

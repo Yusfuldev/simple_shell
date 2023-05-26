@@ -10,7 +10,7 @@ int _exitt(char **args)
 
 	if (args[1] == NULL)
 		exit(EXIT_SUCCESS);
-	exit_status = my_atoi(args[1]);
+	exit_status = atoi(args[1]);
 	exit(exit_status);
 }
 

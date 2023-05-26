@@ -1,9 +1,11 @@
 #include "shell.h"
+
 /**
  * printenv - prints all environment variables
  * @args: arguments.
  * Return: nothing.
  */
+
 int printenv(char **args)
 {
 	char **k = NULL;

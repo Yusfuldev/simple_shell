@@ -1,5 +1,4 @@
 #include "shell.h"
-void rm_spaces(char *p);
 /**
  * tokenize- tokenize the command entered by user.
  * @buffer: buffer to tokenize.
@@ -33,12 +32,23 @@ char **tokenize(char *buffer, char *delim)
 		return (NULL);
 	}
 	token = _strtok(buffer, delim);
-	for (; i < num_toks && token != NULL; i++)
+	for (i = 0; i < num_toks && token != NULL; i++)
 	{
 		args[i] = my_strdup(token);
+		if (!args[i])
+		{
+			while (i > 0)
+				free(args[--i]);
+			free(args);
+			free(buf_cp);
+			free(buffer);
+			return (NULL);
+		}
 		token = _strtok(NULL, delim);
 	}
 	args[i] = NULL;
+
 	free(buf_cp);
 	return (args);
 }
+
