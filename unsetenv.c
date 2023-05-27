@@ -4,9 +4,10 @@
  * @args: arguments.
  * Return: 0 or -1 on failure.
  */
-int _unsetenv(char *name)
+int _unsetenv(char **args)
 {
 	int i = 0, flag = 0;
+	char *name = args[1];
 	size_t name_len = my_strlen(name);
 
 	if (!name) /* invalid name */
