@@ -4,7 +4,7 @@
  *_prompt - print the prompt
  *@argc: argument counts
  *@argv: argument vector
- *
+ *@mode: mode of the terminal
  *Return: nothing
 */
 
@@ -14,6 +14,7 @@ void _prompt(int argc, __attribute__((unused))char **argv, int mode)
 	char *input = NULL;
 	char **command = NULL;
 	char **result = NULL;
+
 	while (1)
 	{
 		if (mode)

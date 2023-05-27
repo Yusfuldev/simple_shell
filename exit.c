@@ -2,6 +2,7 @@
 /**
  * _exitt - exits the shell with status.
  * @args: arguments
+ * @command: parsed command
  * Return: exit status.
  */
 int _exitt(char **args, char **command)
@@ -16,7 +17,7 @@ int _exitt(char **args, char **command)
 	}
 	exit_status = atoi(args[1]);
 		free_args(args);
-		free_args(command);
+		free(command);
 	exit(exit_status);
 }
 

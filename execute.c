@@ -3,6 +3,7 @@
  * execute- executes th commands entered by user
  * @args: commands to ecxecute
  * @ac: number of arguments
+ * @command: parsed arguments
  * Return: 1 to main to continue loop
  */
 
@@ -45,7 +46,7 @@ int process(char **args)
 	}
 	if (child_pid == 0)
 	{
-		if ((status = execve(args[0], args, environ)) < 0)
+		if ((status == execve(args[0], args, environ)) < 0)
 			perror("./hsh");
 		exit(EXIT_FAILURE);
 	}

@@ -2,6 +2,7 @@
 /**
  * builtin_handler - check and execute if command is a builtin.
  * @args: command
+ * @command: parsed arguments
  * Return: 1 for loop to continue or 0 not a builtin.
  */
 
