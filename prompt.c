@@ -8,15 +8,15 @@
  *Return: nothing
 */
 
-void _prompt(int argc, char **argv)
+void _prompt(int argc, __attribute__((unused))char **argv, int mode)
 {
 	int i = 0;
 	char *input = NULL;
 	char **command = NULL;
-
+	char **result = NULL;
 	while (1)
 	{
-		if (isatty(STDIN_FILENO) == 1)
+		if (mode)
 		{
 			write(STDOUT_FILENO, "$ ", 2);
 			fflush(stdout);
@@ -26,18 +26,20 @@ void _prompt(int argc, char **argv)
 		if (input != NULL)
 		{
 			command = tokenize(input, ";");
+			/*free(input);*/
+			input = NULL;
 			i = 0;
 			while (command[i] != NULL)
 			{
-				argv = tokenize(command[i], " ");
-				execute(argc, argv);
-				free_args(argv);
+				result = tokenize(command[i], " ");
+				execute(argc, result, command);
 				i++;
 			}
-			free_args(command);
+			free_args(result);
+			free(command);
 			/*free(result);*/
+			result = NULL;
 		}
-		free(input);
 		continue;
 	}
 }

@@ -22,7 +22,7 @@ char *read_input()
 			write(STDOUT_FILENO, "\n", 1);
 		}
 		free(lineptr);
-		exit(EXIT_SUCCESS);
+		exit(errno);
 	}
 	if (read_char == 1 && lineptr[0] == '\n')
 	{
@@ -72,4 +72,5 @@ void free_args(char **argv)
 	}
 
 	free(argv);
+	argv = NULL;
 }

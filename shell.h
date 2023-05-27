@@ -12,22 +12,23 @@
 #include <dirent.h>
 #include <limits.h>
 #include <ctype.h>
+#include <errno.h>
 
 int ch_dir(char **args);
 int printenv(void);
-int _exitt(char **args);
+int _exitt(char **args, char **command);
 void update_dir(char *pwd);
 int _unsetenv(char *name);
 int _setenv(char *name, char *value);
 int setenv_init(char **args);
-int builtin_handler(char **args);
+int builtin_handler(char **args, char **command);
 extern char **environ;
-void _prompt(int argc, char **argv);
+void _prompt(int argc, char **argv, int mode);
 char *read_input();
 void free_args(char **argv);
 void signal_handler(int signum);
 int process(char **args);
-int execute(int ac, char **args);
+int execute(int ac, char **args, char **command);
 char **tokenize(char *buffer, char *delim);
 char *_strtok(char *str, char *delim);
 char *_strstr(char *haystack, char *needle);

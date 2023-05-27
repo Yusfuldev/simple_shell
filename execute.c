@@ -6,11 +6,11 @@
  * Return: 1 to main to continue loop
  */
 
-int execute(int ac, char **args)
+int execute(int ac, char **args, char **command)
 {
 	char *message = NULL;
 
-	if (builtin_handler(args) == 0)
+	if (builtin_handler(args, command) == 0)
 	{
 	args[0] = path_handler(args);
 	if (args[0] == NULL)
@@ -45,11 +45,17 @@ int process(char **args)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(args[0], args, environ) < 0)
+		if ((status = execve(args[0], args, environ)) < 0)
 			perror("./hsh");
-		exit(EXIT_SUCCESS);
+		exit(EXIT_FAILURE);
 	}
-	wait(&status);
+	else
+	{
+		wait(&status);
+
+		if (WIFEXITED(status))
+			errno = WEXITSTATUS(status);
+	}
 
 	return (1);
 }

@@ -4,13 +4,19 @@
  * @args: arguments
  * Return: exit status.
  */
-int _exitt(char **args)
+int _exitt(char **args, char **command)
 {
 	int exit_status = 0;
 
 	if (args[1] == NULL)
-		exit(EXIT_SUCCESS);
+	{
+		free_args(args);
+		free(command);
+		exit(errno);
+	}
 	exit_status = atoi(args[1]);
+		free_args(args);
+		free_args(command);
 	exit(exit_status);
 }
 

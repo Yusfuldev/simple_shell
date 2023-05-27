@@ -30,6 +30,7 @@ char **tokenize(char *buffer, char *delim)
 		perror("Error: malloc");
 		free(buf_cp);
 		free(buffer);
+		buffer = NULL;
 		return (NULL);
 	}
 	free(buf_cp);
@@ -60,10 +61,13 @@ char **parse(char *buffer, char *delim, char **args, int num_toks)
 				free(args[--i]);
 			free(args);
 			free(buffer);
+			buffer = NULL;
 			return (NULL);
 		}
 		token = _strtok(NULL, delim);
 	}
+	free(buffer);
+	buffer = NULL;
 	args[i] = NULL;
 	return (args);
 }

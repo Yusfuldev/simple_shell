@@ -8,6 +8,12 @@
 
 int main(int argc, char **argv)
 {
-	_prompt(argc, argv);
+	int mode = 0;
+
+	if (isatty(STDIN_FILENO) == 1)
+		mode = 1;
+	errno = 0;
+
+	_prompt(argc, argv, mode);
 	return (0);
 }

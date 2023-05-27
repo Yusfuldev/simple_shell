@@ -5,7 +5,7 @@
  * Return: 1 for loop to continue or 0 not a builtin.
  */
 
-int builtin_handler(char **args)
+int builtin_handler(char **args, char **command)
 {
 	int num = 6, i = 0;
 	char *builtins[] = {"exit", "cd", "setenv", "unsetenv", "env", NULL};
@@ -17,7 +17,7 @@ int builtin_handler(char **args)
 			switch (i + 1)
 			{
 				case 1:
-					_exitt(args);
+					_exitt(args, command);
 					return (1);
 				case 2:
 					ch_dir(args);
