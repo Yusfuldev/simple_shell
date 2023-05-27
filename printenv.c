@@ -6,12 +6,11 @@
  * Return: nothing.
  */
 
-int printenv(char **args)
+int printenv()
 {
 	char **k = NULL;
 	int i = 0;
 
-	(void)args;
 	k = environ;
 	while (k[i])
 	{

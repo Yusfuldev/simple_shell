@@ -14,11 +14,12 @@
 #include <ctype.h>
 
 int ch_dir(char **args);
-int printenv(char **args);
+int printenv();
 int _exitt(char **args);
 void update_dir(char *pwd);
-int _unsetenv(char **args);
-int _setenv(char **args);
+int _unsetenv(char *name);
+int _setenv(char *name, char *value);
+int setenv_init(char **args);
 int builtin_handler(char **args);
 extern char **environ;
 void _prompt(int argc, char **argv);
