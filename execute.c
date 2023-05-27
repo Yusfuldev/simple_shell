@@ -10,21 +10,21 @@ int execute(int ac, char **args)
 {
 	char *message = NULL;
 
-	builtin_handler(args);
-	if ((_strstr(args[0], "/")) == NULL)
+	if (builtin_handler(args) == 0)
 	{
-		args[0] = path_handler(args);
-		if (args[0] == NULL)
-		{
-			write(STDERR_FILENO, "./hsh: 1: ", 10);
-			write(STDERR_FILENO, args[0], my_strlen(args[0]));
-			message = " : not found\n";
-			write(STDERR_FILENO, message, my_strlen(message));
-			return (1);
-		}
+	args[0] = path_handler(args);
+	if (args[0] == NULL)
+	{
+		write(STDERR_FILENO, "./hsh: 1: ", 10);
+		write(STDERR_FILENO, args[0], my_strlen(args[0]));
+		message = " : not found\n";
+		write(STDERR_FILENO, message, my_strlen(message));
+		return (1);
 	}
 	(void)ac;
 	return (process(args));
+	}
+	return (1);
 }
 
 /**

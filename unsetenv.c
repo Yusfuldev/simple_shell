@@ -1,42 +1,31 @@
 #include "shell.h"
 /**
  * _unsetenv- removes an environment variable from list
- * @args: arguments.
+ * @name: name of env to unset.
  * Return: 0 or -1 on failure.
  */
-int _unsetenv(char **args)
+int _unsetenv(char *name)
 {
-	int i = 0, flag = 0;
-	char *name = args[1];
+	int i = 0;
 	size_t name_len = my_strlen(name);
+	char **aux = NULL, **env = NULL;
 
 	if (!name) /* invalid name */
 	{
 		perror("unsetenv");
-		return (1);
+		return (-1);
 	}
-
-	while (environ[i] != NULL)
+	environ = env;
+	while (env[i] != NULL)
 	{
-		if (my_strncmp(environ[i], name, name_len) == 0 &&
-environ[i][name_len] == '=')
-		{
-			free(environ[i]);
-			flag = 1;
-			break;
-		}
+		if (my_strncmp(env[i], name, name_len) == 0
+				&& env[i][name_len] == '=')
+			i++;
+		aux[i] = env[i];
 		i++;
 	}
-	if (flag == 1)
-	{
-		while (environ[i] != NULL) /* shift the remainder to occupy the space */
-		{
-			environ[i] = environ[i + 1];
-			i++;
-		}
-		environ[i] = NULL;
-		return (1);
-	}
-	perror("unsetenv");
-	return (1);
+	aux[i] = NULL;
+	environ = aux;
+	return (0);
 }
+

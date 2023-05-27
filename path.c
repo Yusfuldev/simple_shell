@@ -25,7 +25,7 @@ char *path_handler(char **argv)
 		my_strcpy(command, token);
 		my_strcat(command, "/");
 		my_strcat(command, argv[0]);
-		/*my_strcat(command, "\0");*/
+		my_strcat(command, "\0");
 
 		if (stat(command, &st) == 0)
 		{

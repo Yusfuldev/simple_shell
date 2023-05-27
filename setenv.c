@@ -1,27 +1,20 @@
 #include "shell.h"
 /**
- * _setenv- updates or create an environment variable.
- * @args: arguments
- * Return: 1 for loop to continue.
+ * _setenv- updates or creates an environment variable.
+ * @name: name of env
+ * @value: value of env
+ * Return: 1 for the loop to continue.
  */
-
-int _setenv(char **args)
+int _setenv(char *name, char *value)
 {
-	char *name = args[1];
-	int i = 0;
-	char *value = args[2];
+	int n = 0;
 	size_t name_len = 0, env_len = 0, val_len = 0;
-	char *new_env = NULL;
+	char *new_env = NULL, **aux = NULL, **env = NULL;
 
-	if (!name || !value)
-	{
-		perror("setenv");
-		return (1);
-	}
-	name_len = my_strlen(name);        /* create new_env */
+	name_len = my_strlen(name);
 	val_len = my_strlen(value);
 	env_len = name_len + val_len + 2;
-	new_env = malloc(env_len * sizeof(char *));
+	new_env = malloc(env_len * sizeof(char));
 	if (!new_env)
 	{
 		perror("setenv");
@@ -30,20 +23,25 @@ int _setenv(char **args)
 	my_strcpy(new_env, name);
 	my_strcat(new_env, "=");
 	my_strcat(new_env, value);
-	my_strcat(new_env, "\0");
-
-	while (environ[i] != NULL)
+	aux = environ;
+	while (aux[n] != NULL)
 	{
-		if (my_strncmp(environ[i], name, name_len) == 0
-&& environ[i][name_len] == '=')
+		if (my_strncmp(aux[n], name, name_len) == 0 && aux[n][name_len] == '=')
 		{
-			free(environ[i]);
-			environ[i] = new_env;
-			return (1);
+			aux[n] = new_env;
+			return (0);
 		}
-		i++;
+		n++;
 	}
-	environ[i] = new_env;
-	environ[i + 1] = '\0';
-	return (1);
+	env = _realloc(aux, (n + 2) * sizeof(char *));
+	if (!env)
+	{
+		free(new_env);
+		return (-1);
+	}
+	env[n] = new_env;
+	env[n + 1] = NULL;
+	environ = env;
+	return (0);
 }
+

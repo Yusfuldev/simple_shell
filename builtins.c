@@ -23,13 +23,13 @@ int builtin_handler(char **args)
 					ch_dir(args);
 					return (1);
 				case 3:
-					_setenv(args);
+					setenv_init(args);
 					return (1);
 				case 4:
-					_unsetenv(args);
+					_unsetenv(args[1]);
 					return (1);
 				case 5:
-					printenv(args);
+					printenv();
 					return (1);
 				default:
 					break;
@@ -41,17 +41,21 @@ int builtin_handler(char **args)
 
 /**
  * ch_dir- changes the current working directory
- * @args: command/path
- * Return: 1
+ * @args: command/path to change to
+ * Return: 1 for loop to continue.
  */
+
 int ch_dir(char **args)
 {
 	char *old_dir = _getenv("OLDPWD");
 	char *pwd = _getenv("PWD");
+	char *hom = _getenv("HOME");
 
 	if (args[1] == NULL)
 	{
-		printf("HOME");
+		if (chdir(hom) < 0)
+			perror("chdir");
+		update_dir(pwd);
 		return (1);
 	}
 	if (my_strcmp(args[1], "-") == 0)
@@ -81,7 +85,22 @@ void update_dir(char *pwd)
 		perror("getcwd");
 		return;
 	}
-	setenv("OLDPWD", pwd, 1);
-	setenv("PWD", cwd, 1);
+	_setenv("OLDPWD", pwd);
+	_setenv("PWD", cwd);
 	free(cwd);
+}
+
+/**
+ * setenv_init - handles which env-function to call.
+ * @args: arguments vector
+ * Return: 1
+ */
+int setenv_init(char **args)
+{
+	if (!args[1] && !args[2])
+		return (1);
+	if (args[1] && !args[2])
+		return (1);
+	_setenv(args[1], args[2]);
+	return (1);
 }
